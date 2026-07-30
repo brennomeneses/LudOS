@@ -6,7 +6,9 @@
  * Mesmos valores hex do mockup HTML (ver comentário no topo
  * do lud-os-mockup.html). Mantidos idênticos de propósito, pra
  * qualquer ajuste de cor ser feito num lugar só.
- * ============================================================ */
+ * THIS FILE WAS VIBE CODED
+ * ============================================================
+ */
 
 namespace theme {
 

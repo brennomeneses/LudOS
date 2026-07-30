@@ -24,4 +24,4 @@ void init() {
     lv_indev_drv_register(&indev_drv);
 }
 
-} // namespace touch
+}

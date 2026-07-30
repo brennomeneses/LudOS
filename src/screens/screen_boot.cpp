@@ -86,4 +86,4 @@ void create() {
     lv_timer_set_repeat_count(t, 1);
 }
 
-} // namespace screen_boot
+}

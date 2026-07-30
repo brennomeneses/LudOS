@@ -9,8 +9,7 @@ constexpr uint8_t ROTATION = 1;
 
 static TFT_eSPI tft_inst = TFT_eSPI();
 
-/* Touch XPT2046 no barramento VSPI separado do display.
- * CLK=25, MOSI=32, MISO=39, CS=33, IRQ=36 (não usado, polling). */
+// * CLK=25, MOSI=32, MISO=39, CS=33, IRQ=36 (não usado, polling).
 static SPIClass touchSPI(VSPI_HOST);
 
 /* Funções de baixo nível para ler o XPT2046 via SPI custom. */
@@ -34,9 +33,8 @@ bool touch_read(uint16_t *x, uint16_t *y) {
     int z = z1 + 4095 - z2;
     if (z < 400) return false;
 
-    // Lê X e Y (eixos trocados: raw X → tela Y, raw Y → tela X)
-    int16_t rx = touch_read_adc(0xD1);  // raw Y do chip → tela X
-    int16_t ry = touch_read_adc(0x91);  // raw X do chip → tela Y
+    int16_t rx = touch_read_adc(0xD1);
+    int16_t ry = touch_read_adc(0x91);
 
     *x = map(rx, 240, 3800, 0, SCREEN_W - 1);
     *y = map(ry, 200, 3700, SCREEN_H - 1, 0);  // Y invertido
@@ -72,7 +70,6 @@ void init() {
     ledcWrite(0, 255);
     Serial.println("display init OK");
 
-    // Init touch SPI bus separado (VSPI_HOST)
     touchSPI.begin(25, 39, 32, 33);
     pinMode(33, OUTPUT);
     digitalWrite(33, HIGH);
@@ -93,4 +90,4 @@ void set_backlight(uint8_t percent) {
     ledcWrite(0, (percent * 255) / 100);
 }
 
-} // namespace display
+}

@@ -46,4 +46,4 @@ void init() {
     lv_style_set_text_color(&style_text_soft, lv_color_hex(INK_SOFT));
 }
 
-} // namespace theme
+}

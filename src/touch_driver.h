@@ -4,6 +4,7 @@
 /* ============================================================
  * Lud OS — touch_driver
  * Leitura do touch resistivo XPT2046 e registro como indev do LVGL.
+ * THIS FILE WAS VIBECODED
  * ============================================================ */
 namespace touch {
 

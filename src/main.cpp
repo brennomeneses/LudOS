@@ -26,15 +26,11 @@ void setup() {
 }
 
 void loop() {
-    // Avisa o LVGL de quanto tempo passou desde a última volta do loop.
-    // Fazemos isso manualmente (em vez de confiar no LV_TICK_CUSTOM do
-    // lv_conf.h) porque não há garantia de que o lv_conf.h esteja sendo
-    // encontrado pelo compilador nesse ambiente — ver PLAN.md.
     static uint32_t last_tick = 0;
     uint32_t now = millis();
     lv_tick_inc(now - last_tick);
     last_tick = now;
 
     lv_timer_handler();
-    delay(5); // dá espaço pro watchdog/WiFi/etc respirarem
+    delay(5);
 }

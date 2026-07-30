@@ -52,4 +52,4 @@ void show(const char *app_name, const char *icon_symbol) {
     lv_scr_load(scr);
 }
 
-} // namespace app_placeholder
+}

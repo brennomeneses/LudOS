@@ -15,9 +15,10 @@ struct AppDef {
     const char *symbol;
 };
 
-/* Lista central dos apps do sistema. Pra adicionar um app novo,
+/* Lista de apps do sistema. Pra add um app novo,
  * basta acrescentar uma linha aqui e criar o handler dele — ver
- * PLAN.md, seção 7. */
+ * PLAN.md, seção 7.
+ */
 static const AppDef APPS[] = {
     {"Telefone",    LV_SYMBOL_CALL},
     {"Mensagens",   LV_SYMBOL_ENVELOPE},
@@ -30,7 +31,6 @@ static const AppDef APPS[] = {
 };
 static const int APP_COUNT = sizeof(APPS) / sizeof(APPS[0]);
 
-/* callback genérico: cada ícone guarda o índice do app em user_data */
 static void app_icon_cb(lv_event_t *e) {
     intptr_t idx = (intptr_t)lv_event_get_user_data(e);
     const AppDef &app = APPS[idx];
@@ -159,4 +159,4 @@ void create() {
     clock_timer_cb(NULL);
 }
 
-} // namespace screen_home
+}
