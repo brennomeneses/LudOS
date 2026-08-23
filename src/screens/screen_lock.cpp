@@ -1,13 +1,13 @@
 #include "screen_lock.h"
 #include "screen_home.h"
 #include "../theme.h"
+#include "../screen_manager.h"
 #include <Arduino.h>
 #include <lvgl.h>
 #include <time.h>
 
 namespace screen_lock {
 
-static lv_obj_t *scr;
 static lv_obj_t *time_lbl;
 static lv_obj_t *date_lbl;
 
@@ -27,7 +27,7 @@ static void clock_timer_cb(lv_timer_t *timer) {
 }
 
 void create() {
-    scr = lv_obj_create(NULL);
+    lv_obj_t *scr = lv_obj_create(NULL);
     lv_obj_add_style(scr, &theme::style_screen_bg, 0);
     lv_obj_set_style_bg_color(scr, lv_color_hex(theme::PINK_200), 0);
     lv_obj_clear_flag(scr, LV_OBJ_FLAG_SCROLLABLE);
@@ -52,10 +52,10 @@ void create() {
     lv_obj_set_style_text_font(hint, &lv_font_montserrat_12, 0);
     lv_obj_align(hint, LV_ALIGN_BOTTOM_MID, 0, -18);
 
-    lv_scr_load(scr);
+    screen_manager::replace(scr);
 
-    static lv_timer_t *t = lv_timer_create(clock_timer_cb, 1000, NULL);
-    (void)t;
+    lv_timer_t *t = lv_timer_create(clock_timer_cb, 1000, NULL);
+    screen_manager::register_timer(t);
 }
 
 }

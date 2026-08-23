@@ -1,12 +1,12 @@
 #include "screen_home.h"
 #include "app_placeholder.h"
 #include "../theme.h"
+#include "../screen_manager.h"
 #include <Arduino.h>
 #include <lvgl.h>
 
 namespace screen_home {
 
-static lv_obj_t *scr;
 static lv_obj_t *clock_lbl_top;
 static lv_obj_t *clock_lbl_widget;
 
@@ -81,7 +81,7 @@ static void clock_timer_cb(lv_timer_t *timer) {
 }
 
 void create() {
-    scr = lv_obj_create(NULL);
+    lv_obj_t *scr = lv_obj_create(NULL);
     lv_obj_add_style(scr, &theme::style_screen_bg, 0);
     lv_obj_clear_flag(scr, LV_OBJ_FLAG_SCROLLABLE);
 
@@ -152,10 +152,10 @@ void create() {
         create_app_icon(dock, APPS[DOCK_IDX[i]], DOCK_IDX[i], true);
     }
 
-    lv_scr_load(scr);
+    screen_manager::replace(scr);
 
-    static lv_timer_t *t = lv_timer_create(clock_timer_cb, 1000, NULL);
-    (void)t;
+    lv_timer_t *t = lv_timer_create(clock_timer_cb, 1000, NULL);
+    screen_manager::register_timer(t);
     clock_timer_cb(NULL);
 }
 

@@ -8,6 +8,7 @@
 #include "display_driver.h"
 #include "touch_driver.h"
 #include "theme.h"
+#include "screen_manager.h"
 #include "screens/screen_boot.h"
 
 void setup() {
@@ -19,6 +20,7 @@ void setup() {
     display::init();
     touch::init();
     theme::init();
+    screen_manager::init();
 
     screen_boot::create();
 

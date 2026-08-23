@@ -1,6 +1,7 @@
 #include "screen_boot.h"
 #include "screen_lock.h"
 #include "../theme.h"
+#include "../screen_manager.h"
 #include <lvgl.h>
 
 namespace screen_boot {
@@ -80,7 +81,7 @@ void create() {
     });
     lv_anim_start(&bar_anim);
 
-    lv_scr_load(scr);
+    screen_manager::replace(scr);
 
     lv_timer_t *t = lv_timer_create(goto_lock_cb, 1700, NULL);
     lv_timer_set_repeat_count(t, 1);

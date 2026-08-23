@@ -1,12 +1,15 @@
 #include "app_placeholder.h"
 #include "screen_home.h"
 #include "../theme.h"
+#include "../screen_manager.h"
+#include <Arduino.h>
 #include <lvgl.h>
 
 namespace app_placeholder {
 
 static void back_cb(lv_event_t *e) {
     (void)e;
+    Serial.println("app_placeholder: back pressed");
     screen_home::create();
 }
 
@@ -49,7 +52,7 @@ void show(const char *app_name, const char *icon_symbol) {
     lv_obj_add_style(msg, &theme::style_text_soft, 0);
     lv_obj_align_to(msg, icon, LV_ALIGN_OUT_BOTTOM_MID, 0, 8);
 
-    lv_scr_load(scr);
+    screen_manager::replace(scr);
 }
 
 }
