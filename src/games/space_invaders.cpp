@@ -26,9 +26,9 @@ constexpr int PLAYER_SPEED = 4 * SPRITE_SCALE;
 
 constexpr int BULLET_W = 2 * SPRITE_SCALE;
 constexpr int BULLET_H = 5 * SPRITE_SCALE;
-constexpr int PLAYER_BULLET_SPEED = 4;
-constexpr int ENEMY_BULLET_SPEED = 2;
-constexpr int MAX_ENEMY_BULLETS = 3;
+constexpr int PLAYER_BULLET_SPEED = 5;
+constexpr int ENEMY_BULLET_SPEED = 3;
+constexpr int MAX_ENEMY_BULLETS = 4;
 
 constexpr int STEP_PX = 4 * SPRITE_SCALE;
 constexpr int DROP_PX = 6 * SPRITE_SCALE;
