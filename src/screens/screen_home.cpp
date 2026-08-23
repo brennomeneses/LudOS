@@ -1,5 +1,6 @@
 #include "screen_home.h"
 #include "app_placeholder.h"
+#include "screen_invaders.h"
 #include "../theme.h"
 #include "../screen_manager.h"
 #include <Arduino.h>
@@ -35,8 +36,7 @@ static void app_icon_cb(lv_event_t *e) {
     intptr_t idx = (intptr_t)lv_event_get_user_data(e);
     const AppDef &app = APPS[idx];
 
-    // TODO: quando "Invaders" tiver o jogo de verdade, troque esta
-    // linha por: if (idx == 7) { game::start(); return; }
+    if (idx == 7) { screen_invaders::create(); return; }
     app_placeholder::show(app.name, app.symbol);
 }
 
