@@ -390,6 +390,10 @@ void start(lv_obj_t *c, lv_obj_t *sl, lv_obj_t *ll) {
 
 void stop() {
     game_over = true;
+    if (game_timer) {
+        lv_timer_del(game_timer);
+        game_timer = nullptr;
+    }
 }
 
 void reset() {

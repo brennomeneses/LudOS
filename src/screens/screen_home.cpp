@@ -106,7 +106,7 @@ void create() {
     // ---- widget de relógio ----
     lv_obj_t *widget = lv_obj_create(scr);
     lv_obj_add_style(widget, &theme::style_card, 0);
-    lv_obj_set_size(widget, LV_PCT(92), 40);
+    lv_obj_set_size(widget, LV_PCT(92), 45);
     lv_obj_align_to(widget, status, LV_ALIGN_OUT_BOTTOM_MID, 0, 6);
     lv_obj_clear_flag(widget, LV_OBJ_FLAG_SCROLLABLE);
 
