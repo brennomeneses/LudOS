@@ -44,8 +44,8 @@ bool touch_read(uint16_t *x, uint16_t *y) {
 }
 
 static lv_disp_draw_buf_t draw_buf;
-static lv_color_t buf1[SCREEN_W * 40];
-static lv_color_t buf2[SCREEN_W * 40];
+static lv_color_t buf1[SCREEN_W * 20];
+static lv_color_t buf2[SCREEN_W * 20];
 
 static void flush_cb(lv_disp_drv_t *drv, const lv_area_t *area, lv_color_t *color_p) {
     uint32_t w = (area->x2 - area->x1 + 1);
@@ -74,7 +74,7 @@ void init() {
     pinMode(33, OUTPUT);
     digitalWrite(33, HIGH);
 
-    lv_disp_draw_buf_init(&draw_buf, buf1, buf2, SCREEN_W * 40);
+    lv_disp_draw_buf_init(&draw_buf, buf1, buf2, SCREEN_W * 20);
 
     static lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);

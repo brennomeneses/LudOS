@@ -24,7 +24,7 @@ void setup() {
 
     screen_boot::create();
 
-    Serial.println("Lud OS - boot OK, entrando no loop principal");
+    Serial.println("Lud OS: boot OK, entrando no loop principal");
 }
 
 void loop() {

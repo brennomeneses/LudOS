@@ -1,5 +1,6 @@
 #include "screen_home.h"
 #include "app_placeholder.h"
+#include "screen_invaders.h"
 #include "../theme.h"
 #include "../screen_manager.h"
 #include <Arduino.h>
@@ -35,8 +36,7 @@ static void app_icon_cb(lv_event_t *e) {
     intptr_t idx = (intptr_t)lv_event_get_user_data(e);
     const AppDef &app = APPS[idx];
 
-    // TODO: quando "Invaders" tiver o jogo de verdade, troque esta
-    // linha por: if (idx == 7) { game::start(); return; }
+    if (idx == 7) { screen_invaders::create(); return; }
     app_placeholder::show(app.name, app.symbol);
 }
 
@@ -106,7 +106,7 @@ void create() {
     // ---- widget de relógio ----
     lv_obj_t *widget = lv_obj_create(scr);
     lv_obj_add_style(widget, &theme::style_card, 0);
-    lv_obj_set_size(widget, LV_PCT(92), 40);
+    lv_obj_set_size(widget, LV_PCT(92), 45);
     lv_obj_align_to(widget, status, LV_ALIGN_OUT_BOTTOM_MID, 0, 6);
     lv_obj_clear_flag(widget, LV_OBJ_FLAG_SCROLLABLE);
 
